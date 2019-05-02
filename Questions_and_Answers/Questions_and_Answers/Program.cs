@@ -6,14 +6,13 @@ namespace Questions_and_Answers
     {
         static void Main(string[] args)
         {
-            
-            string[] answers = new string[10];
+            string[] answers = { "", "" }; 
+            string[] userAnswers = new string[10];
             string[] questions = { "", ""};
             
             for(int i = 0; i < answers.Length; i++)
             {
-                Console.Write(questions[i]);
-                answers[i] = Console.ReadLine();
+                Console.Write(questions[i]);                
             }
             Console.ReadLine();
             
