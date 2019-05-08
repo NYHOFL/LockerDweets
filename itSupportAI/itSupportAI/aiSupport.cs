@@ -31,7 +31,7 @@ namespace itSupportAI
         {
             string output;
 
-            if ( == 'y')
+            if (input.ToLower()[1] == 'y')
             {
 
             }
