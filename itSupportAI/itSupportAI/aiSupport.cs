@@ -14,10 +14,10 @@ namespace itSupportAI
         public static string[] Type = { };
 
         static void Main()
-        {
-            Console.WriteLine();
+        {           
             Console.ReadLine();
         }
+
 
     }
 }
