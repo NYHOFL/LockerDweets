@@ -70,12 +70,12 @@ namespace itSupportAI
             Console.Clear();
             int[] menuOptionsNo = { 1, 2, 3};
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
-            Console.WriteLine("What Type of Computer do you have? ");
+            Console.WriteLine(Questions[3]);
 
             foreach (int i in menuOptionsNo)
             {
                 Console.Write(i.ToString().PadLeft(2));
-                Console.WriteLine((menuOptions[i] + i).PadLeft(10));
+                Console.WriteLine((menuOptions[i]).PadLeft(10));
             }
             Console.Write("0".PadLeft(2));
             Console.WriteLine("Exit IT Support AI system.");
