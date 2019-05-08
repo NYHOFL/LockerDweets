@@ -85,6 +85,8 @@ namespace itSupportAI
             Console.Write("0".PadLeft(2));
             Console.WriteLine("Exit IT Support AI system.");
 
+            //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
+
             int menuChoice = Convert.ToInt32(Console.ReadLine());
             switch (menuChoice)
             {
