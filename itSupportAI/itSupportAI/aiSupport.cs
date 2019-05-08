@@ -12,6 +12,7 @@ namespace itSupportAI
         public static string[] Questions = { };
         public static string[] Answers = { };
         public static string[] Type = { };
+        public static string[] System = { };
 
         static string answerText(string input)
         {
@@ -23,6 +24,24 @@ namespace itSupportAI
         static string answerNum(string input)
         {
             string output;
+            bool loop = true;
+            int count = 0;
+            string[] inputArray = input.Split(' ');
+            while (loop == true)
+            {
+                Console.WriteLine(count);
+                try
+                {
+                    Convert.ToInt16(inputArray[0].Trim());
+                    loop = false;
+                }
+                catch (System.FormatException)
+                {
+                    count++;
+                }                
+            }
+
+
 
             output = input;
             return output;
@@ -33,15 +52,21 @@ namespace itSupportAI
 
             if (input.ToLower()[1] == 'y')
             {
-
+                output = "yes";
             }
-            
+            else
+            {
+                output = "no";
+            }            
             return output;
         }
 
         static void Main()
-        {           
-
+        {
+            string x;
+            Console.WriteLine("How old are you");
+            x = answerNum(Console.ReadLine());
+            Console.WriteLine($"I got {x}");
             Console.ReadLine();
         }
 
