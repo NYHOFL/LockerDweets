@@ -14,20 +14,14 @@ namespace itSupportAI
         public static string[] Type = { };
         public static string[] System = { };
 
-        static string answerText(string input)
-        {
-            string output;
-
-            output = input;
-            return output;
-        }
-        static string answerNum(string input)
+        static string answerNum(string input) //Get the answer if it expected to be a number
         {
             string output = "";
             bool loop = true;
             int count = 0;
-            string[] inputArray = input.Split(' ');
-            while (loop == true)
+            string[] inputArray = input.Split(' '); //Splitting the input into individual words
+
+            while (loop == true) //Go through each word and check if it is a number
             {               
                 try
                 {
@@ -40,22 +34,23 @@ namespace itSupportAI
                 }
                 count++;
             }            
-            return output;
-        }
-        static string answerBool(string input)
+            return output; //Return the number
+        } //Number Answer Close
+
+        static string answerBool(string input) //Getting the answer if it is expected to be a yes or a no
         {
             string output;
 
-            if (input.ToLower()[1] == 'y')
+            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
             {
                 output = "yes";
             }
-            else
+            else //Anything else is probably a no
             {
                 output = "no";
             }            
             return output;
-        }
+        } //Bool Answer Close
 
         static void Main()
         {           
@@ -102,6 +97,9 @@ namespace itSupportAI
                     break;
                 default:
                     break;
+
+                
+                //Basic menu system to navigate through questionaires
 
             }
         }
