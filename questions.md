@@ -36,5 +36,15 @@ POST Errors
 OS Errors
 [Use recovery tool]
 
+--COMPUTER BOOTS CORRECTLY--
+
+Internet Connection:
+
+Are all cables plugged in correctly? (Lights on modem on, lights on internet port on) [Yes/No]
+Is the modem set up correctly? (If not, contact your Internet Service Provider) [Yes/No]
+*If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.*
+
+Blue Screens:
+Virus Detection:
 
 
