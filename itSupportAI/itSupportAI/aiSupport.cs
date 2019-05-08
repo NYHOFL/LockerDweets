@@ -68,16 +68,15 @@ namespace itSupportAI
         public static void Menu()
         {
             Console.Clear();
-            int[] menuOptionsNo = { 1, 2, 3};
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
             Console.WriteLine(Questions[3]);
 
-            foreach (int i in menuOptionsNo)
+            for (int i = 0; i < menuOptions.Length; i++)
             {
-                Console.Write(i.ToString().PadLeft(2));
-                Console.WriteLine((menuOptions[i]).PadLeft(10));
+                Console.Write((i + 1).ToString().PadRight(5));
+                Console.WriteLine((menuOptions[i]));
             }
-            Console.Write("0".PadLeft(2));
+            Console.Write("0".PadRight(5));
             Console.WriteLine("Exit IT Support AI system.");
 
             int menuChoice = Convert.ToInt32(Console.ReadLine());
