@@ -13,8 +13,35 @@ namespace itSupportAI
         public static string[] Answers = { };
         public static string[] Type = { };
 
+        static string answerText(string input)
+        {
+            string output;
+
+            output = input;
+            return output;
+        }
+        static string answerNum(string input)
+        {
+            string output;
+
+            output = input;
+            return output;
+        }
+        static string answerBool(string input)
+        {
+            string output;
+
+            if ( == 'y')
+            {
+
+            }
+            
+            return output;
+        }
+
         static void Main()
         {           
+
             Console.ReadLine();
         }
 
