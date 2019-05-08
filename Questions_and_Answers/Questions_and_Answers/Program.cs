@@ -13,7 +13,10 @@ namespace Questions_and_Answers
             for(int i = 0; i < answers.Length; i++)
             {
                 userAnswers[i] = Console.ReadLine();
-                Console.Write(questions[i]);                
+                Console.Write(questions[i]);            
+                
+
+
             }
             Console.ReadLine();
             

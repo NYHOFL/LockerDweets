@@ -41,10 +41,68 @@ namespace itSupportAI
 
         static void Main()
         {           
-
             Console.ReadLine();
+            Menu();
+
         }
 
+
+
+        public static void Menu()
+        {
+            Console.Clear();
+            int[] menuOptionsNo = { 1, 2, 3};
+            string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
+            Console.WriteLine("What Type of Computer do you have? ");
+
+            foreach (int i in menuOptionsNo)
+            {
+                Console.Write(i.ToString().PadLeft(2));
+                Console.WriteLine((menuOptions[i] + i).PadLeft(10));
+            }
+            Console.Write("0".PadLeft(2));
+            Console.WriteLine("Exit IT Support AI system.");
+
+            int menuChoice = Convert.ToInt32(Console.ReadLine());
+            switch (menuChoice)
+            {
+                case 1:
+                    Console.Clear();
+                    MacQuestions();
+                    break;
+                case 2:
+                    Console.Clear();
+                    PCQuestions();
+                    break;
+                case 3:
+                    Console.Clear();
+                    LinuxQuestions();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
+        public static void LinuxQuestions()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Console.Write(Questions[i]);
+                Answers[i] = Console.ReadLine();
+
+            }
+        }
+
+        public static void PCQuestions()
+        {
+
+        }
+
+        public static void MacQuestions()
+        {
+
+        }
 
     }
 }
