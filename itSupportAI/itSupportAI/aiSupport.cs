@@ -9,25 +9,19 @@ namespace itSupportAI
     class aiSupport
     {
 
-        public static string[] Questions = { };
+        public static string[] Questions = { "What is your name?", "What is your age?", "What type of OS are you troubleshooting?", "Is the computer turning on? (Fans are spinning)", "If yes, can you get to the desktop? (See all of your icons)" };
         public static string[] Answers = { };
         public static string[] Type = { };
         public static string[] System = { };
 
-        static string answerText(string input)
-        {
-            string output;
-
-            output = input;
-            return output;
-        }
-        static string answerNum(string input)
+        static string answerNum(string input) //Get the answer if it expected to be a number
         {
             string output = "";
             bool loop = true;
             int count = 0;
-            string[] inputArray = input.Split(' ');
-            while (loop == true)
+            string[] inputArray = input.Split(' '); //Splitting the input into individual words
+
+            while (loop == true) //Go through each word and check if it is a number
             {               
                 try
                 {
@@ -40,22 +34,23 @@ namespace itSupportAI
                 }
                 count++;
             }            
-            return output;
-        }
-        static string answerBool(string input)
+            return output; //Return the number
+        } //Number Answer Close
+
+        static string answerBool(string input) //Getting the answer if it is expected to be a yes or a no
         {
             string output;
 
-            if (input.ToLower()[1] == 'y')
+            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
             {
                 output = "yes";
             }
-            else
+            else //Anything else is probably a no
             {
                 output = "no";
             }            
             return output;
-        }
+        } //Bool Answer Close
 
         static void Main()
         {           
@@ -75,12 +70,12 @@ namespace itSupportAI
             Console.Clear();
             int[] menuOptionsNo = { 1, 2, 3};
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
-            Console.WriteLine("What Type of Computer do you have? ");
+            Console.WriteLine(Questions[3]);
 
             foreach (int i in menuOptionsNo)
             {
                 Console.Write(i.ToString().PadLeft(2));
-                Console.WriteLine((menuOptions[i] + i).PadLeft(10));
+                Console.WriteLine((menuOptions[i]).PadLeft(10));
             }
             Console.Write("0".PadLeft(2));
             Console.WriteLine("Exit IT Support AI system.");

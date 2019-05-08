@@ -1,7 +1,7 @@
 What is your name? [Text]
 What is your age? [Number]
 What type of OS are you troubleshooting? [Text]
-Is the computer turning on? (Fans are spinning) [Yes/No] -- If no, go to initialisation issues. 
+Is the computer turning on? (Fans are spinning) [Yes/No] -- If yes, go to --COMPUTER BOOTS CORRECTLY -- If no, go to initialisation issues. 
 If yes, can you get to the desktop? (See all of your icons) [Yes/No] -- If no, go to boot issues
 
 
@@ -45,6 +45,9 @@ Is the modem set up correctly? (If not, contact your Internet Service Provider) 
 *If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.*
 
 Blue Screens:
+
+Restart the computer
+
 Virus Detection:
 
-
+If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.
