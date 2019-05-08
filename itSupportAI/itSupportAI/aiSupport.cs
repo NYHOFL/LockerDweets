@@ -9,7 +9,7 @@ namespace itSupportAI
     class aiSupport
     {
 
-        public static string[] Questions = { };
+        public static string[] Questions = { "What is your name?", "What is your age?", "What type of OS are you troubleshooting?", "Is the computer turning on? (Fans are spinning)", "If yes, can you get to the desktop? (See all of your icons)" };
         public static string[] Answers = { };
         public static string[] Type = { };
         public static string[] System = { };
