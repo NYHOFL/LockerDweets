@@ -23,27 +23,23 @@ namespace itSupportAI
         }
         static string answerNum(string input)
         {
-            string output;
+            string output = "";
             bool loop = true;
             int count = 0;
             string[] inputArray = input.Split(' ');
             while (loop == true)
-            {
-                Console.WriteLine(count);
+            {               
                 try
                 {
-                    Convert.ToInt16(inputArray[0].Trim());
+                    Convert.ToInt16(inputArray[count].Trim());
+                    output = inputArray[count];
                     loop = false;
                 }
                 catch (System.FormatException)
                 {
-                    count++;
-                }                
-            }
-
-
-
-            output = input;
+                }
+                count++;
+            }            
             return output;
         }
         static string answerBool(string input)
@@ -64,10 +60,6 @@ namespace itSupportAI
         static void Main()
         {           
         
-            string x;
-            Console.WriteLine("How old are you");
-            x = answerNum(Console.ReadLine());
-            Console.WriteLine($"I got {x}");
             Console.ReadLine();
 
 
