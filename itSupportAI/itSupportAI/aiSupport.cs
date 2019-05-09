@@ -157,23 +157,24 @@ namespace itSupportAI
 
             for (int i = 0; i < Questions.Length/4; i++)
             {
-                if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any"))
+                if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any")) //Determaining the OS
                 {
-                    Console.WriteLine(Questions[i, 0]);
-
-                    answer = Console.ReadLine();
+                    Console.WriteLine(Questions[i, 0]); 
+                    answer = Console.ReadLine(); //Asking user for their answer
                     if (Questions[i, 2] == "Int")
                     {
+                        Questions[i,3] = answerNum(answer);
 
                     }
                     else if (Questions[i, 2] == "Bool")
                     {
-
+                        Questions[i, 3] = answerBool(answer);
                     }
                     else
                     {
-
+                        Questions[i, 3] = answer;
                     }
+                    //Passing answer through corrisponding to the answer type
                     Questions[i, 3] = Console.ReadLine();
 
 
