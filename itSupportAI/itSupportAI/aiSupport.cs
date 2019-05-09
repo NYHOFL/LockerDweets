@@ -11,10 +11,35 @@ namespace itSupportAI
 
         public static string[,] Questions =
         {
-            {"What is your name?", "", "", ""},
-            {"What is your age?", "", "", ""},
-            {"Is the computer turning on?", "any", "", "" },
-            {"Can you get to the desktop?", "", "", ""}
+            {"What is your name?", "Any", "String", ""},
+            {"What is your age?", "Any", "Int", ""},
+            {"Is the computer turning on?", "Any", "Bool", "" },
+            {"Can you get to the desktop?", "Any", "Bool", ""},
+            {"What type of OS are you troubleshooting?", "Any", "", ""},
+            ///boot issues branch///
+            {"Is the monitor turned on? (Lit up on button)", "Any", "Bool", ""},
+            {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""},
+            {"Is the monitor on the correct input (Try pressing the Source button)", "Any", "Bool", ""},
+            /// If the computer will not start///
+            {"Are all the cables plugged in correctly?", "Any", "Bool", ""},
+            {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""},
+            {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""},
+            {"Are you pressing the correct power button? (Make sure the power button is being pressed, not the restart button)", "Any", "Bool", ""},
+            /// init issues///
+            {"Has the operating system logo shown up? (Apple for Apple, Four squares for Windows, Penguin for Linux)", "Any", "Bool", ""},
+            {"Has the user login screen shown up? (Should ask for your user password)", "Any", "Bool", ""},
+            {"Are you entering the password correctly? (Will be saying incorrect password)", "Any", "Bool", ""},
+            /// computer boots correctly ///
+            /// internet branch ///
+            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""},
+            {"Is the modem set up correctly? (If not, contact your Internet Service Provider)", "Any", "Bool", ""},
+            {"If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.", "Any", "Bool", ""},
+            /// Blue Screens of death ///
+            {"Restart the computer", "Any", "Bool", ""},
+            {"If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.", "Any", "Bool", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
+            {"", "", "", ""},
         };
 
         static string answerNum(string input) //Get the answer if it expected to be a number
