@@ -11,7 +11,7 @@ namespace itSupportAI
 
         public static string[,] Questions =
         {
-            {"What is your name?", "", "", ""},     
+            {"What is your name?", "", "", ""},
             {"What is your age?", "", "", ""},
             {"Is the computer turning on?", "Any", "Bool", "" },
             {"Can you get to the desktop?", "Any", "Bool", ""},
@@ -107,19 +107,20 @@ namespace itSupportAI
             //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
 
             int menuChoice = Convert.ToInt32(Console.ReadLine());
+            string operatingSystem = "Any";
             switch (menuChoice)
             {
                 case 1:
                     Console.Clear();
-                    MacQuestions();
+                    operatingSystem = "Windows";
                     break;
                 case 2:
                     Console.Clear();
-                    PCQuestions();
+                    operatingSystem = "Linux";
                     break;
                 case 3:
                     Console.Clear();
-                    LinuxQuestions();
+                    operatingSystem = "Mac";
                     break;
                 default:
                     break;
@@ -128,6 +129,7 @@ namespace itSupportAI
                 //Basic menu system to navigate through questionaires
 
             }
+            QuestionAsking(operatingSystem);
         }
 
         public static void LinuxQuestions()
@@ -145,7 +147,7 @@ namespace itSupportAI
 
         }
 
-        public static void MacQuestions()
+        public static void QuestionAsking(string OS)
         {
 
         }
