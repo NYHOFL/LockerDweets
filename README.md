@@ -2,4 +2,5 @@
 epic gamer moment
 
 
-https://play.typeracer.com?rt=2lw8f5jtpl
+https://play.typeracer.com?rt=24zoxulf4w
+https://play.typeracer.com?rt=24zoxulf4w
