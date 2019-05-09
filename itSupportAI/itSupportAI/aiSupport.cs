@@ -148,6 +148,7 @@ namespace itSupportAI
                 //Basic menu system to navigate through questionaires
 
             }
+            Console.Clear();
             QuestionAsking(operatingSystem);
         }
 
