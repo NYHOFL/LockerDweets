@@ -13,7 +13,7 @@ namespace itSupportAI
         {
             {"What is your name?", "", "", ""},     
             {"What is your age?", "", "", ""},
-            {"Is the computer turning on?", "", "", "" },
+            {"Is the computer turning on?", "any", "", "" },
             {"Can you get to the desktop?", "", "", ""}
         };
 
@@ -58,10 +58,7 @@ namespace itSupportAI
         static void Main()
         {           
         
-            Console.ReadLine();
-
-
-
+            Console.ReadLine();            
 
             Menu();
         }
@@ -115,6 +112,7 @@ namespace itSupportAI
                 Console.Write(Questions[i, 0]);
                 Questions[i, 1] = Console.ReadLine();                
             }
+            
         }
 
         public static void PCQuestions()
