@@ -88,8 +88,7 @@ namespace itSupportAI
 
         static void Main()
         {           
-        
-            Console.ReadLine();            
+              
 
             Menu();
         }
