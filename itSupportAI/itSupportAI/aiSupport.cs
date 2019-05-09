@@ -75,7 +75,7 @@ namespace itSupportAI
         {
             string output;
 
-            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
+            if (input.ToLower()[1] == 'y') //If thre is a y, it's most likely a yes
             {
                 output = "yes";
             }
