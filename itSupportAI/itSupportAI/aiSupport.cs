@@ -159,8 +159,12 @@ namespace itSupportAI
             {
                 if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any")) //Determaining the OS
                 {
+
+                    Console.Clear();
+
                     Console.WriteLine(Questions[i, 0]); 
                     answer = Console.ReadLine(); //Asking user for their answer
+
                     if (Questions[i, 2] == "Int")
                     {
                         Questions[i,3] = answerNum(answer);
