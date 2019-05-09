@@ -153,12 +153,27 @@ namespace itSupportAI
 
         public static void QuestionAsking(string OS)
         {
+            string answer;
+
             for (int i = 0; i < Questions.Length/4; i++)
             {
                 if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any"))
                 {
                     Console.WriteLine(Questions[i, 0]);
 
+                    answer = Console.ReadLine();
+                    if (Questions[i, 2] == "Int")
+                    {
+
+                    }
+                    else if (Questions[i, 2] == "Bool")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     Questions[i, 3] = Console.ReadLine();
 
 
