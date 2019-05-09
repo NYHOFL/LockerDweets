@@ -44,6 +44,10 @@ Are all cables plugged in correctly? (Lights on modem on, lights on internet por
 Is the modem set up correctly? (If not, contact your Internet Service Provider) [Yes/No]
 *If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.*
 
+Freezing: 
+
+Has the computer frozen? (If no, go to other error solutions) (if yes, restart computer, try safe mode)
+
 Blue Screens:
 
 Restart the computer
@@ -51,3 +55,16 @@ Restart the computer
 Virus Detection:
 
 If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.
+
+
+
+Apple Computers:
+
+
+Is the device is stuck in a boot loop (constantly restarting)? (if no, move on, if yes offer advice "unplug all devices such as keyboard and mouse and restart.")
+If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. 
+Is the spinning beach ball of death locked in animation? This means the device is overloaded. If no, ask another question.
+Is the device running slowly? Try the following: Empty trash can. Offload photos to a USB drive. Delete non essential files and programs. Perform a virus check. 
+If a scary black screen has appeared, restart your computer.
+If the screen has majorly glitched out, it may be a dead graphics card. You can also try boot in safe mode and update driver files. If this is not the case, take to a PC shop. 
+Try using the Apple Hardware Fix tool, hold down the "d" key while the computer is booting. This is not foolproof but should solve most problems.
