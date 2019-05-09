@@ -124,7 +124,13 @@ namespace itSupportAI
 
         public static void QuestionAsking(string OS)
         {
-
+            for (int i = 0; i < Questions.Length; i++)
+            {
+                if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any"))
+                {
+                    Console.WriteLine(Questions[i, 0]);
+                }
+            }
         }
 
     }
