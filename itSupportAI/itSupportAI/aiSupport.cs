@@ -9,10 +9,13 @@ namespace itSupportAI
     class aiSupport
     {
 
-        public static string[] Questions = { "What is your name?", "What is your age?", "What type of OS are you troubleshooting?", "Is the computer turning on? (Fans are spinning)", "If yes, can you get to the desktop? (See all of your icons)" };
-        public static string[] Answers = { };
-        public static string[] Type = { };
-        public static string[] System = { };
+        public static string[,] Questions =
+        {
+            {"What is your name?", "", "", ""},     
+            {"What is your age?", "", "", ""},
+            {"Is the computer turning on?", "", "", "" },
+            {"Can you get to the desktop?", "", "", ""}
+        };
 
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
@@ -69,7 +72,7 @@ namespace itSupportAI
         {
             Console.Clear();
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
-            Console.WriteLine(Questions[3]);
+            Console.WriteLine(Questions[3, 0]);
 
             for (int i = 0; i < menuOptions.Length; i++)
             {
@@ -109,9 +112,8 @@ namespace itSupportAI
         {
             for(int i = 0; i < 10; i++)
             {
-                Console.Write(Questions[i]);
-                Answers[i] = Console.ReadLine();
-
+                Console.Write(Questions[i, 0]);
+                Questions[i, 1] = Console.ReadLine();                
             }
         }
 
