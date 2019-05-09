@@ -159,6 +159,7 @@ namespace itSupportAI
             {
                 if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any"))
                 {
+                    Console.Clear();
                     Console.WriteLine(Questions[i, 0]);
 
                     answer = Console.ReadLine();
