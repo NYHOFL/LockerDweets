@@ -36,7 +36,7 @@ POST Errors
 OS Errors
 [Use recovery tool]
 
---COMPUTER BOOTS CORRECTLY--
+--COMPUTER BOOTS CORRECTLY-- (Switch statement to identify issue)
 
 Internet Connection:
 
