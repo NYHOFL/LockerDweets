@@ -88,8 +88,7 @@ namespace itSupportAI
 
         static void Main()
         {           
-        
-            Console.ReadLine();            
+              
 
             Menu();
         }
@@ -121,7 +120,7 @@ namespace itSupportAI
                     menuChoice = Convert.ToInt32(Console.ReadLine());
                     choiceLoop = false;
                 }
-                catch (System.FormatException)
+                catch (Exception)
                 {
                     Console.WriteLine("Please enter the number relating to the operating system you are using");
                 }
@@ -148,6 +147,7 @@ namespace itSupportAI
                 //Basic menu system to navigate through questionaires
 
             }
+            Console.Clear();
             QuestionAsking(operatingSystem);
         }
 
