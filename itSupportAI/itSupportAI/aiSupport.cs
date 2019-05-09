@@ -161,7 +161,6 @@ namespace itSupportAI
                 {
 
                     Console.Clear();
-
                     Console.WriteLine(Questions[i, 0]); 
                     answer = Console.ReadLine(); //Asking user for their answer
 
@@ -178,8 +177,7 @@ namespace itSupportAI
                     {
                         Questions[i, 3] = answer;
                     }
-                    //Passing answer through corrisponding to the answer type
-                    Questions[i, 3] = Console.ReadLine();
+
 
 
                 }
