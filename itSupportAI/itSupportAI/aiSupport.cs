@@ -94,8 +94,8 @@ namespace itSupportAI
         {
             Console.Clear();
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
-            Console.WriteLine(Questions[3, 0]);
 
+            Console.WriteLine("What operating system are you using");
             for (int i = 0; i < menuOptions.Length; i++)
             {
                 Console.Write((i + 1).ToString().PadRight(5));
@@ -106,7 +106,20 @@ namespace itSupportAI
 
             //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
 
-            int menuChoice = Convert.ToInt32(Console.ReadLine());
+            bool choiceLoop = true;
+            int menuChoice = 0;
+            while (choiceLoop == true)
+            {
+                try
+                {
+                    menuChoice = Convert.ToInt32(Console.ReadLine());
+                    choiceLoop = false;
+                }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine("Please enter the number relating to the operating system you are using");
+                }
+            }
             string operatingSystem = "Any";
             switch (menuChoice)
             {
