@@ -132,21 +132,6 @@ namespace itSupportAI
             QuestionAsking(operatingSystem);
         }
 
-        public static void LinuxQuestions()
-        {
-            for(int i = 0; i < 10; i++)
-            {
-                Console.Write(Questions[i, 0]);
-                Questions[i, 1] = Console.ReadLine();                
-            }
-            
-        }
-
-        public static void PCQuestions()
-        {
-
-        }
-
         public static void QuestionAsking(string OS)
         {
             for (int i = 0; i < Questions.Length; i++)
@@ -154,6 +139,8 @@ namespace itSupportAI
                 if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any"))
                 {
                     Console.WriteLine(Questions[i, 0]);
+
+                    Questions[i, 3] = Console.ReadLine();
                 }
             }
         }
