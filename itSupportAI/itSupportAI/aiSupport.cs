@@ -9,10 +9,13 @@ namespace itSupportAI
     class aiSupport
     {
 
-        public static string[] Questions = { "What is your name?", "What is your age?", "What type of OS are you troubleshooting?", "Is the computer turning on? (Fans are spinning)", "If yes, can you get to the desktop? (See all of your icons)" };
-        public static string[] Answers = { };
-        public static string[] Type = { };
-        public static string[] System = { };
+        public static string[,] Questions =
+        {
+            {"What is your name?", "", "", ""},     
+            {"What is your age?", "", "", ""},
+            {"Is the computer turning on?", "", "", "" },
+            {"Can you get to the desktop?", "", "", ""}
+        };
 
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
@@ -68,16 +71,15 @@ namespace itSupportAI
         public static void Menu()
         {
             Console.Clear();
-            int[] menuOptionsNo = { 1, 2, 3};
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
-            Console.WriteLine(Questions[3]);
+            Console.WriteLine(Questions[3, 0]);
 
-            foreach (int i in menuOptionsNo)
+            for (int i = 0; i < menuOptions.Length; i++)
             {
-                Console.Write(i.ToString().PadLeft(2));
-                Console.WriteLine((menuOptions[i]).PadLeft(10));
+                Console.Write((i + 1).ToString().PadRight(5));
+                Console.WriteLine((menuOptions[i]));
             }
-            Console.Write("0".PadLeft(2));
+            Console.Write("0".PadRight(5));
             Console.WriteLine("Exit IT Support AI system.");
 
             //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
@@ -110,9 +112,8 @@ namespace itSupportAI
         {
             for(int i = 0; i < 10; i++)
             {
-                Console.Write(Questions[i]);
-                Answers[i] = Console.ReadLine();
-
+                Console.Write(Questions[i, 0]);
+                Questions[i, 1] = Console.ReadLine();                
             }
         }
 
