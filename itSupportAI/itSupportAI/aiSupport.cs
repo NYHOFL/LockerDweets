@@ -55,7 +55,23 @@ namespace itSupportAI
             int count = 0;
             string[] inputArray = input.Split(' '); //Splitting the input into individual words
 
-            while (loop == true) //Go through each word and check if it is a number
+            do
+            {
+                if (!string.IsNullOrEmpty(answer))
+                {
+                    Console.WriteLine("OK");
+
+                }
+                else
+                {
+                    Console.WriteLine("Please input a value");
+                    count = 0;
+                    answer = Console.ReadLine();
+                }
+            } while (string.IsNullOrEmpty(answer));
+
+
+            /*while (loop == true) //Go through each word and check if it is a number
             {               
                 try
                 {
@@ -67,7 +83,7 @@ namespace itSupportAI
                 {
                 }
                 count++;
-            }            
+            } */           
             return output; //Return the number
         } //Number Answer Close
 
@@ -100,6 +116,7 @@ namespace itSupportAI
             Console.Clear();
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
 
+            Console.WriteLine("Welcome to the IT Support AI Version 1.0");
             Console.WriteLine("What operating system are you using");
             for (int i = 0; i < menuOptions.Length; i++)
             {
@@ -151,9 +168,11 @@ namespace itSupportAI
             QuestionAsking(operatingSystem);
         }
 
+        public static string answer;
+
         public static void QuestionAsking(string OS)
         {
-            string answer;
+
 
             for (int i = 0; i < Questions.Length/4; i++)
             {
