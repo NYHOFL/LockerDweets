@@ -66,8 +66,12 @@ namespace itSupportAI
                 }
                 catch (IndexOutOfRangeException) //If the code gets through the sentance and finds no numbers, ask the user to enter their age again
                 {
-                    Console.WriteLine("Error, not a number");
-                    Console.WriteLine("How old are you");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ERROR: No age found.");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Try entering the number using digits instead of writing out the word.");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine("What is your age?");
                     inputArray = Console.ReadLine().Split(' ');
                     count = 0;
                 }
@@ -76,9 +80,6 @@ namespace itSupportAI
                     count++;
                 }
             } while (loop == true);
-
-            Console.WriteLine($"I got {output}");
-            Console.ReadLine();
             return output;
 
         } //Number Answer Close
