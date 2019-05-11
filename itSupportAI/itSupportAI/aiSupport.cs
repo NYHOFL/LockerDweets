@@ -55,6 +55,7 @@ namespace itSupportAI
             int count = 0;
             string[] inputArray = input.Split(' '); //Splitting the input into individual words
 
+            /*
             do
             {
                 if (!string.IsNullOrEmpty(answer))
@@ -69,10 +70,13 @@ namespace itSupportAI
                     answer = Console.ReadLine();
                 }
             } while (string.IsNullOrEmpty(answer));
+            */
+            
 
 
-            /*while (loop == true) //Go through each word and check if it is a number
-            {               
+            while (loop == true) //Go through each word and check if it is a number
+            {
+                Console.WriteLine(count);
                 try
                 {
                     Convert.ToInt16(inputArray[count].Trim());
@@ -81,9 +85,16 @@ namespace itSupportAI
                 }
                 catch (System.FormatException)
                 {
+                    count++;
                 }
-                count++;
-            } */           
+                catch (IndexOutOfRangeException)
+                {
+                    output = "Error";
+                    loop = false;
+                }                
+            }
+            Console.WriteLine($"I got {output}");
+            Console.ReadLine();
             return output; //Return the number
         } //Number Answer Close
 
@@ -185,7 +196,10 @@ namespace itSupportAI
 
                     if (Questions[i, 2] == "Int")
                     {
-                        Questions[i,3] = answerNum(answer);
+                        do
+                        {
+                            Questions[i, 3] = answerNum(answer);
+                        } while (!string.IsNullOrEmpty(Questions[i, 3]));                        
 
                     }
                     else if (Questions[i, 2] == "Bool")
