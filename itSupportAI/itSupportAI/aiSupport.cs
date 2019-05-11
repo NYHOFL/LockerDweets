@@ -51,50 +51,36 @@ namespace itSupportAI
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
             string output = "";
-            // bool loop = true;
-            // int count = 0;
-            string[] inputArray = input.Split(' '); //Splitting the input into individual words
+            bool loop = true;
+            int count = 0;
+            string[] inputArray = input.Split(' ');
 
-            /*
             do
             {
-                if (!string.IsNullOrEmpty(answer))
+                try //Test to see if the current word can be converted to a number, if it can, then exit the loop
                 {
-                    Console.WriteLine("OK");
-
-                }
-                else
-                {
-                    Console.WriteLine("Please input a value");
-                    answer = Console.ReadLine();
-                }
-            } while (string.IsNullOrEmpty(answer));
-            */
-            
-
-
-            while (loop == true) //Go through each word and check if it is a number
-            {
-                Console.WriteLine(count);
-                try
-                {
-                    Convert.ToInt16(inputArray[count].Trim());
+                    Convert.ToInt16(inputArray[count]);
                     output = inputArray[count];
                     loop = false;
+
                 }
-                catch (System.FormatException)
+                catch (IndexOutOfRangeException) //If the code gets through the sentance and finds no numbers, ask the user to enter their age again
+                {
+                    Console.WriteLine("Error, not a number");
+                    Console.WriteLine("How old are you");
+                    inputArray = Console.ReadLine().Split(' ');
+                    count = 0;
+                }
+                catch (System.FormatException) //If the current word that the code is looking at isnt a number, move onto the next word
                 {
                     count++;
                 }
-                catch (IndexOutOfRangeException)
-                {
-                    output = "Error";
-                    loop = false;
-                }                
-            }
+            } while (loop == true);
+
             Console.WriteLine($"I got {output}");
             Console.ReadLine();
-            return output; //Return the number
+            return output;
+
         } //Number Answer Close
 
         static string answerBool(string input) //Getting the answer if it is expected to be a yes or a no
@@ -196,11 +182,7 @@ namespace itSupportAI
 
                     if (Questions[i, 2] == "Int")
                     {
-                        do
-                        {
-                            Questions[i, 3] = answerNum(answer);
-                        } while (!string.IsNullOrEmpty(Questions[i, 3]));                        
-
+                        Questions[i, 3] = answerNum(answer);               
                     }
                     else if (Questions[i, 2] == "Bool")
                     {

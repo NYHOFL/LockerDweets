@@ -1,0 +1,13 @@
+            do
+            {
+                if (!string.IsNullOrEmpty(answer))
+                {
+                    Console.WriteLine("OK");
+
+                }
+                else
+                {
+                    Console.WriteLine("Please input a value");
+                    answer = Console.ReadLine();
+                }
+            } while (string.IsNullOrEmpty(answer));
