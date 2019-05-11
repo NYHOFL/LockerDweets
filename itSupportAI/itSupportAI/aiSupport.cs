@@ -51,8 +51,8 @@ namespace itSupportAI
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
             string output = "";
-            bool loop = true;
-            int count = 0;
+            // bool loop = true;
+            // int count = 0;
             string[] inputArray = input.Split(' '); //Splitting the input into individual words
 
             /*
@@ -66,7 +66,6 @@ namespace itSupportAI
                 else
                 {
                     Console.WriteLine("Please input a value");
-                    count = 0;
                     answer = Console.ReadLine();
                 }
             } while (string.IsNullOrEmpty(answer));
@@ -109,7 +108,8 @@ namespace itSupportAI
             else //Anything else is probably a no
             {
                 output = "no";
-            }            
+            }    
+            
             return output;
         } //Bool Answer Close
 
