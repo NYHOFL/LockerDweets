@@ -131,7 +131,12 @@ namespace itSupportAI
                 try
                 {
                     menuChoice = Convert.ToInt32(Console.ReadLine());
-                    if (menuChoice > 4 || menuChoice < 0)
+                    if (menuChoice == 0)
+                    {
+                        Environment.Exit(0);
+                    }
+
+                    if (menuChoice > 4 || menuChoice < 0) // Making sure the number entered is valid
                     {
                         Console.WriteLine("Please enter the number relating to the operating system you are using");
                     }
