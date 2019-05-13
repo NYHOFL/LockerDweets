@@ -43,6 +43,8 @@ namespace itSupportAI
             {"", "", "", ""}
         };
 
+        public static string answer;
+
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
             string output = "";
@@ -95,7 +97,7 @@ namespace itSupportAI
             return output;
         } //Bool Answer Close
 
-        public static string AnswerType(string answer, int i)
+        public static string AnswerType(string answer, int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
             Console.WriteLine(Questions[i, 0]);
@@ -116,6 +118,7 @@ namespace itSupportAI
 
             return answer;
         }
+
 
         public static void Menu()
         {
@@ -144,7 +147,7 @@ namespace itSupportAI
                 {
                     try
                     {
-                        menuChoice = Convert.ToInt32(Console.ReadLine()) - 1;
+                        menuChoice = Convert.ToInt32(Console.ReadLine());
                         testForNum = false;
                     }
                     catch (System.FormatException)
@@ -153,7 +156,7 @@ namespace itSupportAI
                     }
                 }
 
-                if (menuChoice < menuOptions.Length && menuChoice > 0) //Now checking if the number entered relates to one of the menu options
+                if (menuChoice <= menuOptions.Length && menuChoice >= 0) //Now checking if the number entered relates to one of the menu options
                 {
                     ChoiceInput = false;
                 }
@@ -163,8 +166,9 @@ namespace itSupportAI
                 }
             }
 
-            string operatingSystem = "Any"; //Setting the menu choice in the questions array
-            switch (menuChoice)
+            string operatingSystem = "Any"; //Setting the menu choice in the questions array//
+
+            switch (menuChoice) //Basic menu system to navigate through questionaire
             {
                 case 1:
                     Console.Clear();
@@ -179,41 +183,28 @@ namespace itSupportAI
                     operatingSystem = "Mac";
                     break;
                 default:
-                    break;
-
-
-                    //Basic menu system to navigate through questionaire
-
+                    break;                    
             }
+            Console.WriteLine(operatingSystem);
+            Console.ReadLine();
             Console.Clear();
             QuestionAsking(operatingSystem);
         }
 
-        public static string answer;
-
         public static void QuestionAsking(string OS)
-        {
-
+        {            
             bool loop = true;
-            int count = 0;
-            do
+            int count = 0;            
+            while (loop == true)
             {
                 AnswerType(answer, count);
                 count++;
 
-                if (Questions[2, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
+                if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
                 {
                     loop = false;
                 }
-                if (Questions[3, 3] == "yes")
-                {
-                    loop = false;
-                }
-
-
-
-
-            } while (loop == true); // Exit the loop if it finds a sub group such as start up issues or program issues
+            } // Exit the loop if it finds a sub group such as start up issues or program issues
 
             if (Questions[3, 3] == "yes")
             {
@@ -226,7 +217,7 @@ namespace itSupportAI
                     AnswerType(answer, j);
 
                 }
-            }
+            }            
             if (Questions[2, 3] == "yes")
             {
                 for (int j = 15; j < 20; j++)
@@ -276,8 +267,6 @@ namespace itSupportAI
                 }
             }
        */
-
-
         }
 
         static void Main()
