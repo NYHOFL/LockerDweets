@@ -26,7 +26,8 @@ namespace itSupportAI
             {"Are you entering the password correctly? (Will be saying incorrect password)", "Any", "Bool", ""},
             /// computer boots correctly ///
             /// internet branch ///
-            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""}, //14
+            {"Is the issue related to your internet connection?", "Any", "Bool", ""},
+            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""}, //15
             {"Is the modem set up correctly? (If not, contact your Internet Service Provider)", "Any", "Bool", ""},
             {"If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.", "Any", "Bool", ""},
             /// Blue Screens of Death ///
@@ -34,12 +35,12 @@ namespace itSupportAI
             {"If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.", "Any", "Bool", ""},
             /// Apple OS (They're Screwed) ///
             {"Is the device is stuck in a boot loop (constantly restarting)? (if no, move on, if yes try unplugging all devices such as the keyboard and mouse, then restart.)", "Mac", "Bool", ""},
-            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""}, //19
+            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""}, //20
             {"Is the spinning beach ball of death locked in animation? This means the device is overloaded.", "Mac", "Bool", ""},
             {"Is the device running slowly? Try the following: Empty trash can. Offload photos to a USB drive. Delete non essential files and programs. Perform a virus check. ", "Mac", "Bool", ""},
             {"If a scary black screen has appeared, restart your computer.", "Mac", "Bool", ""},
             {"If the screen has majorly glitched out, it may be a damaged graphics card. You can also try boot in safe mode and update driver files. If this is not the case, take to a PC shop. ", "Mac", "Bool", ""},
-            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""}, //24
+            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""}, //25
             //{"", "", "", ""}
         };
 
@@ -150,7 +151,7 @@ namespace itSupportAI
                     }
                     catch (System.FormatException)
                     {
-                        Console.WriteLine("That is not a number");
+                        Console.WriteLine("Please enter a valid option");
                     }
                 }
 
@@ -189,7 +190,7 @@ namespace itSupportAI
 
         public static void QuestionAsking(string OS)
         {            
-            bool loop = true;
+            bool loop = true, loop2 = true;
             int count = 0;   
             
             while (loop == true)
@@ -208,26 +209,40 @@ namespace itSupportAI
             //Console.WriteLine(Questions[2,3]);
             //Console.ReadLine();
 
-            if (Questions[3, 3] == "yes")
+            if (Questions[3, 3] == "yes") //If PC turns on
             {
-                for (int j = 12; j < 15; j++)
+                for (int j = 15; j < 18; j++)
                 {
                     AnswerType(j);
 
                 }
-            }            
-            if (Questions[2, 3] == "yes")
+            }
+            if (Questions[2, 3] == "yes") // If PC boots to desktop
             {
-                for (int j = 15; j < 20; j++)
+                while (loop2 == true)
                 {
-
+                    if (Questions[14, 3] == "yes")
+                    {
+                        loop2 = false;
+                    }
+                    else
+                    {
+                        for (int j = 14; j < 20; j++)
+                        {
+                            AnswerType(j);
+                        }
+                    }
+                }
+            }
+            if (operatingSystem == "Mac")
+            {
+                for (int j = 20; j < 26; j++)
+                {
                     AnswerType(j);
-
-
                 }
 
             }
-            if (operatingSystem == "Mac")
+            if (Questions[14,3] == "yes")
             {
                 for (int j = 20; j < 26; j++)
                 {
