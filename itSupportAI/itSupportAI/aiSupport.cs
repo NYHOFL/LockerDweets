@@ -102,8 +102,6 @@ namespace itSupportAI
 
         static void Main()
         {           
-              
-
             Menu();
         }
 
@@ -114,7 +112,7 @@ namespace itSupportAI
             Console.Clear();
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
 
-            Console.WriteLine("Welcome to the IT Support AI Version 1.0");
+            Console.WriteLine("Welcome to the IT Support AI Version 1.0");//Basic menu system, will change once core concepts are completed
             Console.WriteLine("What operating system are you using");
             for (int i = 0; i < menuOptions.Length; i++)
             {
@@ -126,7 +124,7 @@ namespace itSupportAI
 
             //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
 
-            bool choiceLoop = true;
+            bool choiceLoop = true; 
             int menuChoice = 0;
             while (choiceLoop == true)
             {
@@ -140,6 +138,8 @@ namespace itSupportAI
                     Console.WriteLine("Please enter the number relating to the operating system you are using");
                 }
             }
+            //If numbers are not entered it will continue to loop. Basic error checking
+
             string operatingSystem = "Any";
             switch (menuChoice)
             {
@@ -159,7 +159,7 @@ namespace itSupportAI
                     break;
 
                 
-                //Basic menu system to navigate through questionaires
+                //Basic menu system to navigate through questionaire
 
             }
             Console.Clear();
@@ -179,7 +179,7 @@ namespace itSupportAI
 
                     Console.Clear();
                     Console.WriteLine(Questions[i, 0]); 
-                    answer = Console.ReadLine(); //Asking user for their answer
+                    answer = Console.ReadLine(); 
 
                     if (Questions[i, 2] == "Int")
                     {
@@ -193,12 +193,9 @@ namespace itSupportAI
                     {
                         Questions[i, 3] = answer;
                     }
-
-
-
+                    //Will put the answer into the 2D array depending on the type (int, bool, or string)
                 }
             }
         }
-
     }
 }
