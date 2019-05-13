@@ -189,8 +189,8 @@ namespace itSupportAI
         }
 
         public static void QuestionAsking(string OS)
-        {            
-            bool loop = true, loop2 = true;
+        {
+            bool loop = true;
             int count = 0;   
             
             while (loop == true)
@@ -206,8 +206,6 @@ namespace itSupportAI
                 }
             } // Exit the loop if it finds a sub group such as start up issues or program issues
 
-            //Console.WriteLine(Questions[2,3]);
-            //Console.ReadLine();
 
             if (Questions[3, 3] == "yes") //If PC turns on
             {
@@ -219,38 +217,42 @@ namespace itSupportAI
             }
             if (Questions[2, 3] == "yes") // If PC boots to desktop
             {
-                while (loop2 == true)
-                {
+                    AnswerType(14);
+
                     if (Questions[14, 3] == "yes")
                     {
-                        loop2 = false;
-                    }
+                        for (int j = 15; j < 18; j++)
+                        {
+                            AnswerType(j);
+                        }
+                }
                     else
                     {
-                        for (int j = 14; j < 20; j++)
+                        for (int j = 18; j < 20; j++)
                         {
                             AnswerType(j);
                         }
                     }
-                }
             }
-            if (operatingSystem == "Mac")
+
+            if (Questions[14, 3] == "yes") // Read Internet Questions
             {
                 for (int j = 20; j < 26; j++)
                 {
                     AnswerType(j);
                 }
-
             }
-            if (Questions[14,3] == "yes")
+            if (operatingSystem == "Mac") // If the user is on a mac
             {
                 for (int j = 20; j < 26; j++)
                 {
                     AnswerType(j);
                 }
-
             }
-        }
+
+
+        } 
+
 
         static void Main()
         {
