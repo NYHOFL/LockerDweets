@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace itSupportAI
 {
@@ -94,15 +90,10 @@ namespace itSupportAI
             else //Anything else is probably a no
             {
                 output = "no";
-            }    
-            
+            }
+
             return output;
         } //Bool Answer Close
-
-        static void Main()
-        {           
-            Menu();
-        }
 
         public static string AnswerType(string answer, int i)
         {
@@ -122,7 +113,7 @@ namespace itSupportAI
             {
                 Questions[i, 3] = answer;
             }
-            
+
             return answer;
         }
 
@@ -133,7 +124,9 @@ namespace itSupportAI
 
             Console.WriteLine("Welcome to the IT Support AI Version 1.0"); //Basic menu system, will change once core concepts are completed
             Console.WriteLine("What operating system are you using");
-            for (int i = 0; i < menuOptions.Length; i++)
+
+
+            for (int i = 0; i < menuOptions.Length; i++) //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
             {
                 Console.Write((i + 1).ToString().PadRight(5));
                 Console.WriteLine((menuOptions[i]));
@@ -141,42 +134,38 @@ namespace itSupportAI
             Console.Write("0".PadRight(5));
             Console.WriteLine("Exit IT Support AI system.");
 
-            //This is for printing the menu system to the screen, 1 to access windows questions, 2 for linux questions and 3 for mac questions
 
-            bool choiceLoop = true; 
+            bool ChoiceInput = true, testForNum;
             int menuChoice = 0;
-            while (choiceLoop == true)
+            while (ChoiceInput == true)
             {
-                try
+                testForNum = true;
+                while (testForNum == true) //Keep doing this until the user enters a number
                 {
-                    menuChoice = Convert.ToInt32(Console.ReadLine());
-                    if (menuChoice == 0)
+                    try
                     {
-                        Environment.Exit(0);
+                        menuChoice = Convert.ToInt32(Console.ReadLine()) - 1;
+                        testForNum = false;
                     }
-
-                    if (menuChoice > 4 || menuChoice < 0) // Making sure the number entered is valid
+                    catch (System.FormatException)
                     {
-                        Console.WriteLine("Please enter the number relating to the operating system you are using");
+                        Console.WriteLine("That is not a number");
                     }
-                    else
-                    {
-                        choiceLoop = false;
-                    }
-
                 }
-                catch (Exception)
+
+                if (menuChoice < menuOptions.Length && menuChoice > 0) //Now checking if the number entered relates to one of the menu options
                 {
-                    Console.WriteLine("Please enter the number relating to the operating system you are using");
+                    ChoiceInput = false;
                 }
-                
-
+                else
+                {
+                    Console.WriteLine($"Please type a number from 0 to {menuOptions.Length}");
+                }
             }
-            //If numbers are not entered it will continue to loop. Basic error checking
 
-            string operatingSystem = "Any";
+            string operatingSystem = "Any"; //Setting the menu choice in the questions array
             switch (menuChoice)
-            {                                   
+            {
                 case 1:
                     Console.Clear();
                     operatingSystem = "Windows";
@@ -192,8 +181,8 @@ namespace itSupportAI
                 default:
                     break;
 
-                
-                //Basic menu system to navigate through questionaire
+
+                    //Basic menu system to navigate through questionaire
 
             }
             Console.Clear();
@@ -205,98 +194,95 @@ namespace itSupportAI
         public static void QuestionAsking(string OS)
         {
 
-            bool count = true;
-            int i = 0;
+            bool loop = true;
+            int count = 0;
             do
             {
-                AnswerType(answer, i);
-                i++;
+                AnswerType(answer, count);
+                count++;
 
                 if (Questions[2, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
                 {
-                    count = false;
+                    loop = false;
                 }
                 if (Questions[3, 3] == "yes")
                 {
-                    count = false;
+                    loop = false;
                 }
 
 
 
 
-            } while (count == true); // Exit the loop if it finds a sub group such as start up issues or program issues
+            } while (loop == true); // Exit the loop if it finds a sub group such as start up issues or program issues
 
-                if (Questions[3, 3] == "yes")
+            if (Questions[3, 3] == "yes")
+            {
+                for (int j = 12; j < 15; j++)
                 {
-                    for (int j = 12; j < 15; j++)
-                    {
-                        Console.Clear();
-                        Console.WriteLine(Questions[j, 0]);
-                        answer = Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine(Questions[j, 0]);
+                    answer = Console.ReadLine();
 
-                        AnswerType(answer, j);
+                    AnswerType(answer, j);
 
-                    }
                 }
-                if (Questions[2, 3] == "yes")
+            }
+            if (Questions[2, 3] == "yes")
+            {
+                for (int j = 15; j < 20; j++)
                 {
-                    for (int j = 15; j < 20; j++)
-                    {
-                        Console.Clear();
-                        Console.WriteLine(Questions[j, 0]);
-                        answer = Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine(Questions[j, 0]);
+                    answer = Console.ReadLine();
 
-                        AnswerType(answer, j);
+                    AnswerType(answer, j);
 
-
-                    }
 
                 }
 
-
-
-
-
-
-
-
-                /*for (int i = 0; i < 4; i++)
+            }
+            /*for (int i = 0; i < 4; i++)
+            {
+                if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Any")) //Determining the OS
                 {
-                    if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Any")) //Determining the OS
+
+                    Console.Clear();
+                    Console.WriteLine(Questions[i, 0]);
+                    answer = Console.ReadLine();
+
+
+                    if (Questions[i, 2] == "Int")
                     {
-
-                        Console.Clear();
-                        Console.WriteLine(Questions[i, 0]);
-                        answer = Console.ReadLine();
-
-
-                        if (Questions[i, 2] == "Int")
-                        {
-                            Questions[i, 3] = answerNum(answer);
-                        }
-                        else if (Questions[i, 2] == "Bool")
-                        {
-                            Questions[i, 3] = answerBool(answer);
-                        }
-                        else
-                        {
-                            Questions[i, 3] = answer;
-                        }
-
-                        if (Questions[2, 3] == "yes")
-                        {
-
-                        }
-                        //Will put the answer into the 2D array depending on the type (int, bool, or string)
+                        Questions[i, 3] = answerNum(answer);
                     }
-                    else if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Apple"))
+                    else if (Questions[i, 2] == "Bool")
+                    {
+                        Questions[i, 3] = answerBool(answer);
+                    }
+                    else
+                    {
+                        Questions[i, 3] = answer;
+                    }
+
+                    if (Questions[2, 3] == "yes")
                     {
 
                     }
+                    //Will put the answer into the 2D array depending on the type (int, bool, or string)
                 }
-           */
-            
+                else if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Apple"))
+                {
 
+                }
+            }
+       */
+
+
+        }
+
+        static void Main()
+        {
+            Menu();
         }
     }
 }
