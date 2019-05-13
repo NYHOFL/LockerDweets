@@ -131,12 +131,22 @@ namespace itSupportAI
                 try
                 {
                     menuChoice = Convert.ToInt32(Console.ReadLine());
-                    choiceLoop = false;
+                    if (menuChoice > 4 || menuChoice < 0)
+                    {
+                        Console.WriteLine("Please enter the number relating to the operating system you are using");
+                    }
+                    else
+                    {
+                        choiceLoop = false;
+                    }
+
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Please enter the number relating to the operating system you are using");
                 }
+                
+
             }
             //If numbers are not entered it will continue to loop. Basic error checking
 
