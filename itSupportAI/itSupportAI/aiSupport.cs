@@ -11,19 +11,18 @@ namespace itSupportAI
 
         public static string[,] Questions =
         {
-            {"What is your name?", "Any", "String", ""},
+            {"What is your name?", "Any", "String", ""}, //0
             {"What is your age?", "Any", "Int", ""},
-            {"Is the computer turning on?", "Any", "Bool", "" },
-            {"Can you get to the desktop?", "Any", "Bool", ""},
-            {"What type of OS are you troubleshooting?", "Any", "", ""},
+            {"Can you get to the desktop?", "Any", "Bool", "" },
+            {"Is the computer turning on?", "Any", "Bool", ""},
             ///boot issues branch///
-            {"Is the monitor turned on? (Lit up on button)", "Any", "Bool", ""},
+            {"Is the monitor turned on? (Lit up on button)", "Any", "Bool", ""}, //4
             {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""},
             {"Is the monitor on the correct input (Try pressing the Source button)", "Any", "Bool", ""},
             /// If the computer will not start///
             {"Are all the cables plugged in correctly?", "Any", "Bool", ""},
             {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""},
-            {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""},
+            {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""}, //9
             {"Are you pressing the correct power button? (Make sure the power button is being pressed, not the restart button)", "Any", "Bool", ""},
             /// init issues///
             {"Has the operating system logo shown up? (Apple for Apple, Four squares for Windows, Penguin for Linux)", "Any", "Bool", ""},
@@ -31,7 +30,7 @@ namespace itSupportAI
             {"Are you entering the password correctly? (Will be saying incorrect password)", "Any", "Bool", ""},
             /// computer boots correctly ///
             /// internet branch ///
-            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""},
+            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""}, //14
             {"Is the modem set up correctly? (If not, contact your Internet Service Provider)", "Any", "Bool", ""},
             {"If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.", "Any", "Bool", ""},
             /// Blue Screens of death ///
@@ -39,12 +38,12 @@ namespace itSupportAI
             {"If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.", "Any", "Bool", ""},
             /// Apple OS (They're Screwed) ///
             {"Is the device is stuck in a boot loop (constantly restarting)? (if no, move on, if yes try unplugging all devices such as the keyboard and mouse, then restart.)", "Mac", "Bool", ""},
-            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""},
+            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""}, //19
             {"Is the spinning beach ball of death locked in animation? This means the device is overloaded.", "Mac", "Bool", ""},
             {"Is the device running slowly? Try the following: Empty trash can. Offload photos to a USB drive. Delete non essential files and programs. Perform a virus check. ", "Mac", "Bool", ""},
             {"If a scary black screen has appeared, restart your computer.", "Mac", "Bool", ""},
             {"If the screen has majorly glitched out, it may be a damaged graphics card. You can also try boot in safe mode and update driver files. If this is not the case, take to a PC shop. ", "Mac", "Bool", ""},
-            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""},
+            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""}, //24
             {"", "", "", ""}
         };
 
@@ -88,7 +87,7 @@ namespace itSupportAI
         {
             string output;
 
-            if (input.ToLower()[1] == 'y') //If thre is a y, it's most likely a yes
+            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
             {
                 output = "yes";
             }
@@ -105,14 +104,34 @@ namespace itSupportAI
             Menu();
         }
 
+        public static string AnswerType(string answer, int i)
+        {
+            Console.Clear();
+            Console.WriteLine(Questions[i, 0]);
+            answer = Console.ReadLine();
 
+            if (Questions[i, 2] == "Int")
+            {
+                Questions[i, 3] = answerNum(answer);
+            }
+            else if (Questions[i, 2] == "Bool")
+            {
+                Questions[i, 3] = answerBool(answer);
+            }
+            else
+            {
+                Questions[i, 3] = answer;
+            }
+            
+            return answer;
+        }
 
         public static void Menu()
         {
             Console.Clear();
             string[] menuOptions = { "PC/Windows", "Linux", "Mac" };
 
-            Console.WriteLine("Welcome to the IT Support AI Version 1.0");//Basic menu system, will change once core concepts are completed
+            Console.WriteLine("Welcome to the IT Support AI Version 1.0"); //Basic menu system, will change once core concepts are completed
             Console.WriteLine("What operating system are you using");
             for (int i = 0; i < menuOptions.Length; i++)
             {
@@ -186,31 +205,98 @@ namespace itSupportAI
         public static void QuestionAsking(string OS)
         {
 
-
-            for (int i = 0; i < Questions.Length/4; i++)
+            bool count = true;
+            int i = 0;
+            do
             {
-                if ((Questions[i, 1] == OS)|| (Questions[i, 1] == "Any")) //Determaining the OS
+                AnswerType(answer, i);
+                i++;
+
+                if (Questions[2, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
                 {
-
-                    Console.Clear();
-                    Console.WriteLine(Questions[i, 0]); 
-                    answer = Console.ReadLine(); 
-
-                    if (Questions[i, 2] == "Int")
-                    {
-                        Questions[i, 3] = answerNum(answer);               
-                    }
-                    else if (Questions[i, 2] == "Bool")
-                    {
-                        Questions[i, 3] = answerBool(answer);
-                    }
-                    else
-                    {
-                        Questions[i, 3] = answer;
-                    }
-                    //Will put the answer into the 2D array depending on the type (int, bool, or string)
+                    count = false;
                 }
-            }
+                if (Questions[3, 3] == "yes")
+                {
+                    count = false;
+                }
+
+
+
+
+            } while (count == true); // Exit the loop if it finds a sub group such as start up issues or program issues
+
+                if (Questions[3, 3] == "yes")
+                {
+                    for (int j = 12; j < 15; j++)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(Questions[j, 0]);
+                        answer = Console.ReadLine();
+
+                        AnswerType(answer, j);
+
+                    }
+                }
+                if (Questions[2, 3] == "yes")
+                {
+                    for (int j = 15; j < 20; j++)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(Questions[j, 0]);
+                        answer = Console.ReadLine();
+
+                        AnswerType(answer, j);
+
+
+                    }
+
+                }
+
+
+
+
+
+
+
+
+                /*for (int i = 0; i < 4; i++)
+                {
+                    if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Any")) //Determining the OS
+                    {
+
+                        Console.Clear();
+                        Console.WriteLine(Questions[i, 0]);
+                        answer = Console.ReadLine();
+
+
+                        if (Questions[i, 2] == "Int")
+                        {
+                            Questions[i, 3] = answerNum(answer);
+                        }
+                        else if (Questions[i, 2] == "Bool")
+                        {
+                            Questions[i, 3] = answerBool(answer);
+                        }
+                        else
+                        {
+                            Questions[i, 3] = answer;
+                        }
+
+                        if (Questions[2, 3] == "yes")
+                        {
+
+                        }
+                        //Will put the answer into the 2D array depending on the type (int, bool, or string)
+                    }
+                    else if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Apple"))
+                    {
+
+                    }
+                }
+           */
+            
+
         }
     }
 }
