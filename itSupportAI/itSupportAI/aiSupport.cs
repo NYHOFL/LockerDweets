@@ -83,7 +83,7 @@ namespace itSupportAI
 
             int menuChoice = Convert.ToInt32(Console.ReadLine());
             switch (menuChoice)
-            {
+            {                                   
                 case 1:
                     Console.Clear();
                     MacQuestions();
