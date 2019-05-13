@@ -85,7 +85,7 @@ namespace itSupportAI
         {
             string output;
 
-            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
+            if (input.ToLower()[0] == 'y') //If there is a y, it's most likely a yes
             {
                 output = "yes";
             }
@@ -97,7 +97,7 @@ namespace itSupportAI
             return output;
         } //Bool Answer Close
 
-        public static string AnswerType(string answer, int i) //Deciding what type the answer is and putting it through the answer type methods
+        public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
             Console.WriteLine(Questions[i, 0]);
@@ -115,8 +115,6 @@ namespace itSupportAI
             {
                 Questions[i, 3] = answer;
             }
-
-            return answer;
         }
 
 
@@ -185,8 +183,6 @@ namespace itSupportAI
                 default:
                     break;                    
             }
-            Console.WriteLine(operatingSystem);
-            Console.ReadLine();
             Console.Clear();
             QuestionAsking(operatingSystem);
         }
@@ -194,27 +190,31 @@ namespace itSupportAI
         public static void QuestionAsking(string OS)
         {            
             bool loop = true;
-            int count = 0;            
+            int count = 0;   
+            
             while (loop == true)
             {
-                AnswerType(answer, count);
-                count++;
-
-                if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
+                if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes")
                 {
                     loop = false;
                 }
+                else
+                {
+                    AnswerType(count);
+                    count++;
+                }
+
+                
             } // Exit the loop if it finds a sub group such as start up issues or program issues
+
+            //Console.WriteLine(Questions[2,3]);
+            //Console.ReadLine();
 
             if (Questions[3, 3] == "yes")
             {
                 for (int j = 12; j < 15; j++)
                 {
-                    Console.Clear();
-                    Console.WriteLine(Questions[j, 0]);
-                    answer = Console.ReadLine();
-
-                    AnswerType(answer, j);
+                    AnswerType(j);
 
                 }
             }            
@@ -222,11 +222,8 @@ namespace itSupportAI
             {
                 for (int j = 15; j < 20; j++)
                 {
-                    Console.Clear();
-                    Console.WriteLine(Questions[j, 0]);
-                    answer = Console.ReadLine();
 
-                    AnswerType(answer, j);
+                    AnswerType(j);
 
 
                 }
