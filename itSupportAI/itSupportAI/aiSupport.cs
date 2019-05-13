@@ -181,6 +181,9 @@ namespace itSupportAI
                     Console.Clear();
                     operatingSystem = "Mac";
                     break;
+                case 0:
+                    Environment.Exit(1);
+                    break;
                 default:
                     break;                    
             }
@@ -249,8 +252,6 @@ namespace itSupportAI
                     AnswerType(j);
                 }
             }
-
-
         } 
 
 
