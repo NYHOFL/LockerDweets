@@ -84,16 +84,35 @@ namespace itSupportAI
 
         static string answerBool(string input) //Getting the answer if it is expected to be a yes or a no
         {
-            string output;
-
-            if (input.ToLower()[0] == 'y') //If there is a y, it's most likely a yes
+            bool loop = true;
+            string output="";
+            string[] inputArray = input.Split(' ');
+            do
             {
-                output = "yes";
-            }
-            else //Anything else is probably a no
-            {
-                output = "no";
-            }
+                for (int i = 0; i < inputArray.Length; i++)
+                {
+                    if (inputArray[i].ToLower() == "yes")
+                    {
+                        output = "yes";
+                        loop = false;
+                    }
+                    else if (inputArray[i].ToLower() == "no")
+                    {
+                        output = "no";
+                        loop = false;
+                    }
+                    else
+                    {
+                        loop = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("ERROR: No answer found");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Try entering a yes or a no");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        inputArray = Console.ReadLine().Split(' ');
+                    }
+                }
+            } while (loop == true);
 
             return output;
         } //Bool Answer Close
