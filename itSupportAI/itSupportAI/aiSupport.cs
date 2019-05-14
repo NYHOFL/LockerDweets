@@ -7,7 +7,7 @@ namespace itSupportAI
 
         public static string[,] Questions =
         {
-            {"What is your name?", "Any", "String", ""}, //0 boys this doesn't work
+            {"What is your name?", "Any", "String", ""}, 
             {"What is your age?", "Any", "Int", ""},
             {"Can you get to the desktop?", "Any", "Bool", "" },
             {"Is the computer turning on?", "Any", "Bool", ""},
@@ -101,7 +101,12 @@ namespace itSupportAI
         public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
-            Console.WriteLine(Questions[i, 0]);
+            if (i > 27)
+           /*{
+                Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
+                Environment.Exit(1);
+            }*/
+                Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
             answer = Console.ReadLine();
 
             if (Questions[i, 2] == "Int")
@@ -195,7 +200,6 @@ namespace itSupportAI
         {
             bool loop = true;
             int count = 0;   
-            
             while (loop == true)
             {
                 if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes")
@@ -258,6 +262,7 @@ namespace itSupportAI
         static void Main()
         {
             Menu();
+            Console.WriteLine("Thanks for utilizing the Virtual IT assistant,\n if you haven't found a solution to your problem,\n consider visiting your local retailer or IT support org");
         }
     }
 }
