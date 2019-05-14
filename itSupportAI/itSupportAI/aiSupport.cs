@@ -101,12 +101,12 @@ namespace itSupportAI
         public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
-            if (i > 27)
-           /*{
-                Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
-                Environment.Exit(1);
-            }*/
-                Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
+            /* if (i > 27)
+            {
+                 Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
+                 Environment.Exit(1);
+             }*/
+            Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
             answer = Console.ReadLine();
 
             if (Questions[i, 2] == "Int")
