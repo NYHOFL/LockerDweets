@@ -101,17 +101,16 @@ namespace itSupportAI
         public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
-
             if (i < 26)
             {
-                Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
+                Console.WriteLine(Questions[i, 0]); 
                 answer = Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
+                Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization");
                 Console.ReadLine();
-                Environment.Exit(1);
+                Menu();
             }
 
             if (Questions[i, 2] == "Int")
@@ -125,6 +124,17 @@ namespace itSupportAI
             else
             {
                 Questions[i, 3] = answer;
+            }
+            if (i > 4)
+            {
+                Console.WriteLine("Does the problem still persist?");
+                string Solved = Console.ReadLine();
+                if (Solved.ToLower()[0] == 'n')
+                {
+                    Console.WriteLine("Since you have marked the system resolved, the program will now return to the menu");
+                    Console.ReadLine();
+                    Menu();
+                }
             }
         }
 
