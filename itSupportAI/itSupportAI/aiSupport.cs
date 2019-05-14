@@ -125,7 +125,7 @@ namespace itSupportAI
             {
                 Questions[i, 3] = answer;
             }
-            if (i > 4)
+            if ((i > 4) && (i != 14))
             {
                 Console.WriteLine("Does the problem still persist?");
                 string Solved = Console.ReadLine();
