@@ -211,6 +211,12 @@ namespace itSupportAI
                 {
                     loop = false;
                 }
+                else if (count == 20)
+                {
+                    loop = false;
+                }
+
+                
                 else
                 {
                     AnswerType(count);
