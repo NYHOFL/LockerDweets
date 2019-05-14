@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading;
 namespace itSupportAI
 {
     class aiSupport
@@ -22,28 +22,29 @@ namespace itSupportAI
             {"Are you pressing the correct power button? (Make sure the power button is being pressed, not the restart button)", "Any", "Bool", ""},
             /// init issues///
             {"Has the operating system logo shown up? (Apple for Apple, Four squares for Windows, Penguin for Linux)", "Any", "Bool", ""},
-            {"Has the user login screen shown up? (Should ask for your user password)", "Any", "Bool", ""},
+            {"Has the user login screen shown up? (Should ask for your username and password)", "Any", "Bool", ""},
             {"Are you entering the password correctly? (Will be saying incorrect password)", "Any", "Bool", ""},
             /// computer boots correctly ///
             /// internet branch ///
-            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""}, //14
+            {"Is the issue related to your internet connection?", "Any", "Bool", ""},
+            {"Are all cables plugged in correctly? (Lights on modem on, lights on internet port on)", "Any", "Bool", ""}, //15
             {"Is the modem set up correctly? (If not, contact your Internet Service Provider)", "Any", "Bool", ""},
             {"If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.", "Any", "Bool", ""},
-            /// Blue Screens of death ///
+            /// Blue Screens of Death ///
             {"Restart the computer", "Any", "Bool", ""},
             {"If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.", "Any", "Bool", ""},
             /// Apple OS (They're Screwed) ///
             {"Is the device is stuck in a boot loop (constantly restarting)? (if no, move on, if yes try unplugging all devices such as the keyboard and mouse, then restart.)", "Mac", "Bool", ""},
-            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""}, //19
+            {"If the computer is crashing, try starting in safe mode. Hold the Left Shift key as the Apple logo shows up. This starts the computer with minimal software loading and checks the hard drive. ", "Mac", "Bool", ""}, //20
             {"Is the spinning beach ball of death locked in animation? This means the device is overloaded.", "Mac", "Bool", ""},
             {"Is the device running slowly? Try the following: Empty trash can. Offload photos to a USB drive. Delete non essential files and programs. Perform a virus check. ", "Mac", "Bool", ""},
             {"If a scary black screen has appeared, restart your computer.", "Mac", "Bool", ""},
             {"If the screen has majorly glitched out, it may be a damaged graphics card. You can also try boot in safe mode and update driver files. If this is not the case, take to a PC shop. ", "Mac", "Bool", ""},
-            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""}, //24
-            {"", "", "", ""}
+            {"Try using the Apple Hardware Fix tool, hold down the d key while the computer is booting. This is not foolproof but should solve most problems.", "Mac", "Bool", ""}, //25
+            //{"", "", "", ""}
         };
 
-        public static string answer;
+        public static string answer, operatingSystem = "Any";
 
         static string answerNum(string input) //Get the answer if it expected to be a number
         {
@@ -56,7 +57,7 @@ namespace itSupportAI
             {
                 try //Test to see if the current word can be converted to a number, if it can, then exit the loop
                 {
-                    Convert.ToInt16(inputArray[count]);
+                    Convert.ToInt32(inputArray[count]);
                     output = inputArray[count];
                     loop = false;
 
@@ -85,7 +86,7 @@ namespace itSupportAI
         {
             string output;
 
-            if (input.ToLower()[1] == 'y') //If there is a y, it's most likely a yes
+            if (input.ToLower()[0] == 'y') //If there is a y, it's most likely a yes
             {
                 output = "yes";
             }
@@ -97,7 +98,7 @@ namespace itSupportAI
             return output;
         } //Bool Answer Close
 
-        public static string AnswerType(string answer, int i) //Deciding what type the answer is and putting it through the answer type methods
+        public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
             Console.WriteLine(Questions[i, 0]);
@@ -115,8 +116,6 @@ namespace itSupportAI
             {
                 Questions[i, 3] = answer;
             }
-
-            return answer;
         }
 
 
@@ -152,7 +151,7 @@ namespace itSupportAI
                     }
                     catch (System.FormatException)
                     {
-                        Console.WriteLine("That is not a number");
+                        Console.WriteLine("Please enter a valid option");
                     }
                 }
 
@@ -166,7 +165,7 @@ namespace itSupportAI
                 }
             }
 
-            string operatingSystem = "Any"; //Setting the menu choice in the questions array//
+
 
             switch (menuChoice) //Basic menu system to navigate through questionaire
             {
@@ -182,92 +181,79 @@ namespace itSupportAI
                     Console.Clear();
                     operatingSystem = "Mac";
                     break;
+                case 0:
+                    Environment.Exit(1);
+                    break;
                 default:
                     break;                    
             }
-            Console.WriteLine(operatingSystem);
-            Console.ReadLine();
             Console.Clear();
             QuestionAsking(operatingSystem);
         }
 
         public static void QuestionAsking(string OS)
-        {            
+        {
             bool loop = true;
-            int count = 0;            
+            int count = 0;   
+            
             while (loop == true)
             {
-                AnswerType(answer, count);
-                count++;
-
-                if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes") // Ant this is the bit thats being funny, should immediately exit but isn't. - Caleb
+                if (Questions[2, 3] == "yes" || Questions[3, 3] == "yes")
                 {
                     loop = false;
                 }
+                else
+                {
+                    AnswerType(count);
+                    count++;
+                }
             } // Exit the loop if it finds a sub group such as start up issues or program issues
 
-            if (Questions[3, 3] == "yes")
-            {
-                for (int j = 12; j < 15; j++)
-                {
-                    Console.Clear();
-                    Console.WriteLine(Questions[j, 0]);
-                    answer = Console.ReadLine();
 
-                    AnswerType(answer, j);
+            if (Questions[3, 3] == "yes") //If PC turns on
+            {
+                for (int j = 15; j < 18; j++)
+                {
+                    AnswerType(j);
 
                 }
-            }            
-            if (Questions[2, 3] == "yes")
-            {
-                for (int j = 15; j < 20; j++)
-                {
-                    Console.Clear();
-                    Console.WriteLine(Questions[j, 0]);
-                    answer = Console.ReadLine();
-
-                    AnswerType(answer, j);
-
-
-                }
-
             }
-            /*for (int i = 0; i < 4; i++)
+            if (Questions[2, 3] == "yes") // If PC boots to desktop
             {
-                if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Any")) //Determining the OS
-                {
+                    AnswerType(14);
 
-                    Console.Clear();
-                    Console.WriteLine(Questions[i, 0]);
-                    answer = Console.ReadLine();
-
-
-                    if (Questions[i, 2] == "Int")
+                    if (Questions[14, 3] == "yes")
                     {
-                        Questions[i, 3] = answerNum(answer);
-                    }
-                    else if (Questions[i, 2] == "Bool")
-                    {
-                        Questions[i, 3] = answerBool(answer);
-                    }
+                        for (int j = 15; j < 18; j++)
+                        {
+                            AnswerType(j);
+                        }
+                }
                     else
                     {
-                        Questions[i, 3] = answer;
+                        for (int j = 18; j < 20; j++)
+                        {
+                            AnswerType(j);
+                        }
                     }
+            }
 
-                    if (Questions[2, 3] == "yes")
-                    {
-
-                    }
-                    //Will put the answer into the 2D array depending on the type (int, bool, or string)
-                }
-                else if ((Questions[i, 1] == OS) || (Questions[i, 1] == "Apple"))
+            if (Questions[14, 3] == "yes") // Read Internet Questions
+            {
+                for (int j = 20; j < 26; j++)
                 {
-
+                    AnswerType(j);
                 }
             }
-       */
-        }
+            if (operatingSystem == "Mac") // If the user is on a mac
+            {
+                for (int j = 20; j < 26; j++)
+                {
+                    AnswerType(j);
+                }
+            }
+        } 
+
 
         static void Main()
         {
