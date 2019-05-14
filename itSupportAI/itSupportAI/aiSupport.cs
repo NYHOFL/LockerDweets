@@ -13,12 +13,12 @@ namespace itSupportAI
             {"Is the computer turning on?", "Any", "Bool", ""},
             ///boot issues branch///
             {"Is the monitor turned on? (Lit up on button)", "Any", "Bool", ""}, //4
-            {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""},
+            {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""}, //Thing 1
             {"Is the monitor on the correct input (Try pressing the Source button)", "Any", "Bool", ""},
             /// If the computer will not start///
             {"Are all the cables plugged in correctly?", "Any", "Bool", ""},
-            {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""},
-            {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""}, //9
+            {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""}, //thing 2
+            {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""}, //9 
             {"Are you pressing the correct power button? (Make sure the power button is being pressed, not the restart button)", "Any", "Bool", ""},
             /// init issues///
             {"Has the operating system logo shown up? (Apple for Apple, Four squares for Windows, Penguin for Linux)", "Any", "Bool", ""},
