@@ -101,13 +101,18 @@ namespace itSupportAI
         public static void AnswerType(int i) //Deciding what type the answer is and putting it through the answer type methods
         {
             Console.Clear();
-            /* if (i > 27)
+
+            if (i < 26)
             {
-                 Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
-                 Environment.Exit(1);
-             }*/
-            Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
-            answer = Console.ReadLine();
+                Console.WriteLine(Questions[i, 0]); //so this keeps falling off of the end of the array
+                answer = Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Thank you for using the AI assistant, if issues persist, visit an IT retailer or support organization"); //Someone have a crack at naturalizing this pls
+                Console.ReadLine();
+                Environment.Exit(1);
+            }
 
             if (Questions[i, 2] == "Int")
             {
@@ -244,14 +249,14 @@ namespace itSupportAI
 
             if (Questions[14, 3] == "yes") // Read Internet Questions
             {
-                for (int j = 20; j < 26; j++)
+                for (int j = 20; j < 25; j++)
                 {
                     AnswerType(j);
                 }
             }
             if (operatingSystem == "Mac") // If the user is on a mac
             {
-                for (int j = 20; j < 26; j++)
+                for (int j = 20; j < 25; j++)
                 {
                     AnswerType(j);
                 }
