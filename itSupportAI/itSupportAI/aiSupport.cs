@@ -7,7 +7,7 @@ namespace itSupportAI
 
         public static string[,] Questions =
         {
-            {"What is your name?", "Any", "String", ""}, //0
+            {"What is your name?", "Any", "String", ""}, //0 boys this doesn't work
             {"What is your age?", "Any", "Int", ""},
             {"Can you get to the desktop?", "Any", "Bool", "" },
             {"Is the computer turning on?", "Any", "Bool", ""},
