@@ -1,0 +1,11 @@
+Menu
+Will ask OS
+
+Questions (see questions document)
+
+If the person answers yes, which should be that they have figured out a fault, ask if the issue is resolved
+If no, ask the next quesion
+
+Specific Mac/Windows/Linux questions
+
+Looping?
