@@ -13,11 +13,11 @@ namespace itSupportAI
             {"Is the computer turning on?", "Any", "Bool", ""},
             ///boot issues branch///
             {"Is the monitor turned on? (Lit up on button)", "Any", "Bool", ""}, //4
-            {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""}, //Thing 1
+            {"Is the computer on with the screen brightness very low? (Lit up on button)", "Any", "Bool", ""}, //Thing 1 [5,0]
             {"Is the monitor on the correct input (Try pressing the Source button)", "Any", "Bool", ""},
             /// If the computer will not start///
             {"Are all the cables plugged in correctly?", "Any", "Bool", ""},
-            {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""}, //thing 2
+            {"Is the switch on the wall set to on? (Switch should be pushed down, or with an orange dot on the switch)", "Any", "Bool", ""}, //Thing 2 [8,0]
             {"Is the switch on the power supply unit set to on? (Check the back of the computer for a switch that should be on)", "Any", "Bool", ""}, //9 
             {"Are you pressing the correct power button? (Make sure the power button is being pressed, not the restart button)", "Any", "Bool", ""},
             /// init issues///
@@ -281,6 +281,42 @@ namespace itSupportAI
                         }
                     }
             }
+
+
+
+
+            if ((Questions[9, 3] == "yes") && (Questions[5, 3] == "no"))
+            {
+                Console.WriteLine("You entered that your computer was on but the brightness was low, this CONTRADICTS your answer to the previous question, would you like to change it?");
+                string restart = Console.ReadLine();
+                while (loop == true)
+                {
+                    if (restart.ToLower() == "yes")
+                    {
+                        loop = false;
+                        count = 6;
+                    }
+                    else if (restart.ToLower() == "no")
+                    {
+                        loop = false;
+                    }
+                    else
+                    {
+                        loop = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("ERROR: No answer found");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Try entering a yes or a no");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                    }
+
+                }
+            }
+
+
+
+
 
             if (Questions[14, 3] == "yes") // Read Internet Questions
             {
