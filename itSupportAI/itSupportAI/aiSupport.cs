@@ -31,7 +31,7 @@ namespace itSupportAI
             {"Is the modem set up correctly? (If not, contact your Internet Service Provider)", "Any", "Bool", ""},
             {"If you are not using cables, ensure that you have selected the correct Wi-Fi network and are inputting the correct password.", "Any", "Bool", ""},
             /// Blue Screens of Death ///
-            {"Restart the computer", "Any", "Bool", ""},
+            {"Did you restart the computer", "Any", "Bool", ""},
             {"If you suspect a virus is on your computer, the best course of action is to run any anti virus software you have installed. If this fails to catch the issue, take it to a PC repair shop.", "Any", "Bool", ""},
             /// Apple OS (They're Screwed) ///
             {"Is the device is stuck in a boot loop (constantly restarting)? (if no, move on, if yes try unplugging all devices such as the keyboard and mouse, then restart.)", "Mac", "Bool", ""},
@@ -151,7 +151,11 @@ namespace itSupportAI
                 if (Solved.ToLower()[0] == 'n')
                 {
                     Console.WriteLine("Since you have marked the system resolved, the program will now return to the menu");
-                    Console.ReadLine();
+                    for (int j = 0; j < 3; j++)
+                    {
+                        Console.Write(".");
+                        Thread.Sleep(1000);
+                    }
                     Menu();
                 }
             }
