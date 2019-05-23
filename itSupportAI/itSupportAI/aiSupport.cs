@@ -289,7 +289,7 @@ namespace itSupportAI
 
 
 
-            if ((Questions[9, 3] == "yes") && (Questions[5, 3] == "no"))
+            if (Questions[9, 3] == "yes")
             {
                 Console.WriteLine("You entered that your computer was on but the brightness was low, this CONTRADICTS your answer to the previous question, would you like to change it?");
                 string restart = Console.ReadLine();
@@ -317,10 +317,6 @@ namespace itSupportAI
 
                 }
             }
-
-
-
-
 
             if (Questions[14, 3] == "yes") // Read Internet Questions
             {
